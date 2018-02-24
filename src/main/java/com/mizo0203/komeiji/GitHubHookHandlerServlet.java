@@ -1,5 +1,7 @@
 package com.mizo0203.komeiji;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mizo0203.komeiji.repo.github.data.CommitCommentEvent;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServlet;
@@ -15,7 +17,11 @@ public class GitHubHookHandlerServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    LOG.info(IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8));
+    String body = IOUtils.toString(req.getInputStream(), StandardCharsets.UTF_8);
+    LOG.info(body);
+    CommitCommentEvent commitCommentEvent =
+        new ObjectMapper().readValue(body, CommitCommentEvent.class);
+    LOG.info("commitCommentEvent: " + commitCommentEvent);
   }
 
   @Override
