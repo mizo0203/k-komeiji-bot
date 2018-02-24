@@ -1,4 +1,4 @@
-package com.mizo0203.twitter.account.activity.api.beta.samples.repo;
+package com.mizo0203.komeiji.repo;
 
 import twitter4j.HttpResponse;
 import twitter4j.Twitter;

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/account-activity-api-beta-samples.iml" filepath="$PROJECT_DIR$/account-activity-api-beta-samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/komeiji-bot.iml" filepath="$PROJECT_DIR$/komeiji-bot.iml" />
     </modules>
   </component>
 </project>

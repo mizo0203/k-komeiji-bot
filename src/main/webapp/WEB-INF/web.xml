@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>registersWebhookURL</servlet-name>
-        <servlet-class>com.mizo0203.twitter.account.activity.api.beta.samples.RegistersWebhookUrlServlet</servlet-class>
+        <servlet-class>com.mizo0203.komeiji.RegistersWebhookUrlServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>registersWebhookURL</servlet-name>
@@ -13,7 +13,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>subscriptions</servlet-name>
-        <servlet-class>com.mizo0203.twitter.account.activity.api.beta.samples.SubscriptionsServlet</servlet-class>
+        <servlet-class>com.mizo0203.komeiji.SubscriptionsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>subscriptions</servlet-name>
@@ -21,7 +21,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>count_subscriptions</servlet-name>
-        <servlet-class>com.mizo0203.twitter.account.activity.api.beta.samples.CountSubscriptionsServlet</servlet-class>
+        <servlet-class>com.mizo0203.komeiji.CountSubscriptionsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>count_subscriptions</servlet-name>
@@ -29,7 +29,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>is_subscribed</servlet-name>
-        <servlet-class>com.mizo0203.twitter.account.activity.api.beta.samples.IsSubscribedServlet</servlet-class>
+        <servlet-class>com.mizo0203.komeiji.IsSubscribedServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>is_subscribed</servlet-name>
@@ -37,7 +37,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>returns_all_urls</servlet-name>
-        <servlet-class>com.mizo0203.twitter.account.activity.api.beta.samples.ReturnsAllUrlsServlet</servlet-class>
+        <servlet-class>com.mizo0203.komeiji.ReturnsAllUrlsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>returns_all_urls</servlet-name>
@@ -46,7 +46,7 @@
     <servlet>
         <servlet-name>list_current_all_activity_type_subscriptions</servlet-name>
         <servlet-class>
-            com.mizo0203.twitter.account.activity.api.beta.samples.ListCurrentAllActivityTypeSubscriptionsServlet
+            com.mizo0203.komeiji.ListCurrentAllActivityTypeSubscriptionsServlet
         </servlet-class>
     </servlet>
     <servlet-mapping>
@@ -55,7 +55,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>deactivates_subscriptions</servlet-name>
-        <servlet-class>com.mizo0203.twitter.account.activity.api.beta.samples.DeactivatesSubscriptionsServlet
+        <servlet-class>com.mizo0203.komeiji.DeactivatesSubscriptionsServlet
         </servlet-class>
     </servlet>
     <servlet-mapping>
@@ -65,7 +65,7 @@
 
     <servlet>
         <servlet-name>twitter_hook</servlet-name>
-        <servlet-class>com.mizo0203.twitter.account.activity.api.beta.samples.TwitterHookHandlerServlet</servlet-class>
+        <servlet-class>com.mizo0203.komeiji.TwitterHookHandlerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>twitter_hook</servlet-name>

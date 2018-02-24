@@ -1,6 +1,6 @@
-package com.mizo0203.twitter.account.activity.api.beta.samples.domain;
+package com.mizo0203.komeiji.domain;
 
-import com.mizo0203.twitter.account.activity.api.beta.samples.repo.TwitterClient;
+import com.mizo0203.komeiji.repo.TwitterClient;
 
 import java.util.logging.Logger;
 

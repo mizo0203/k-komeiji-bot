@@ -1,6 +1,6 @@
-package com.mizo0203.twitter.account.activity.api.beta.samples;
+package com.mizo0203.komeiji;
 
-import com.mizo0203.twitter.account.activity.api.beta.samples.domain.difine.KeysAndAccessTokens;
+import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokens;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 

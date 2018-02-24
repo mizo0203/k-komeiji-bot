@@ -1,6 +1,6 @@
 package twitter4j;
 
-import com.mizo0203.twitter.account.activity.api.beta.samples.domain.difine.KeysAndAccessTokens;
+import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokens;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;

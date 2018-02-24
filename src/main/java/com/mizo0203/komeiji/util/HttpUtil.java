@@ -1,4 +1,4 @@
-package com.mizo0203.twitter.account.activity.api.beta.samples.util;
+package com.mizo0203.komeiji.util;
 
 import org.apache.http.client.utils.URIBuilder;
 

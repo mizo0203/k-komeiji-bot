@@ -1,6 +1,6 @@
-package com.mizo0203.twitter.account.activity.api.beta.samples;
+package com.mizo0203.komeiji;
 
-import com.mizo0203.twitter.account.activity.api.beta.samples.domain.UseCase;
+import com.mizo0203.komeiji.domain.UseCase;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
