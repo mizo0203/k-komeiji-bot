@@ -71,6 +71,14 @@
         <servlet-name>twitter_hook</servlet-name>
         <url-pattern>/twitter_hook</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>github_hook</servlet-name>
+        <servlet-class>com.mizo0203.komeiji.GitHubHookHandlerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>github_hook</servlet-name>
+        <url-pattern>/github_hook</url-pattern>
+    </servlet-mapping>
 
     <security-constraint>
         <web-resource-collection>
