@@ -72,7 +72,7 @@ public class Repository {
   private final String mirror_url;
   private final boolean archived;
   private final int open_issues_count;
-  private final String license;
+  private final License license;
   private final int forks;
   private final int open_issues;
   private final int watchers;
@@ -146,7 +146,7 @@ public class Repository {
       @JsonProperty("mirror_url") String mirror_url,
       @JsonProperty("archived") boolean archived,
       @JsonProperty("open_issues_count") int open_issues_count,
-      @JsonProperty("license") String license,
+      @JsonProperty("license") License license,
       @JsonProperty("forks") int forks,
       @JsonProperty("open_issues") int open_issues,
       @JsonProperty("watchers") int watchers,
