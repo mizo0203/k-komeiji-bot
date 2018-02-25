@@ -126,4 +126,52 @@ public class Comment {
         author_association,
         body);
   }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public String getHtml_url() {
+    return html_url;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public String getPosition() {
+    return position;
+  }
+
+  public String getLine() {
+    return line;
+  }
+
+  public String getPath() {
+    return path;
+  }
+
+  public String getCommit_id() {
+    return commit_id;
+  }
+
+  public String getCreated_at() {
+    return created_at;
+  }
+
+  public String getUpdated_at() {
+    return updated_at;
+  }
+
+  public String getAuthor_association() {
+    return author_association;
+  }
+
+  public String getBody() {
+    return body;
+  }
 }

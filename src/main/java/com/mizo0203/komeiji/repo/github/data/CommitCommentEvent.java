@@ -23,6 +23,22 @@ public class CommitCommentEvent {
     this.sender = sender;
   }
 
+  public String getAction() {
+    return action;
+  }
+
+  public Comment getComment() {
+    return comment;
+  }
+
+  public Repository getRepository() {
+    return repository;
+  }
+
+  public User getSender() {
+    return sender;
+  }
+
   @Override
   public String toString() {
     return "CommitCommentEvent{"

@@ -1,10 +1,9 @@
 package com.mizo0203.komeiji.repo;
 
-import twitter4j.HttpResponse;
-import twitter4j.Twitter;
-import twitter4j.Twitter4JUtil;
-import twitter4j.TwitterException;
+import com.mizo0203.komeiji.domain.difine.TwitterUser;
+import twitter4j.*;
 
+import javax.annotation.Nonnull;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.logging.Level;
@@ -160,6 +159,41 @@ public class TwitterClient {
       LOG.log(Level.INFO, "deactivatesSubscriptions ret.asString(): " + ret.asString());
     } catch (TwitterException e) {
       e.printStackTrace();
+    }
+  }
+
+  /**
+   * Updates the authenticating user’s current status, also known as Tweeting. For each update
+   * attempt, the update text is compared with the authenticating user’s recent Tweets. Any attempt
+   * that would result in duplication will be blocked, resulting in a 403 error. A user cannot
+   * submit the same status twice in a row. While not rate limited by the API, a user is limited in
+   * the number of Tweets they can create at a time. If the number of updates posted by the user
+   * reaches the current allowed limit this method will return an HTTP 403 error.
+   *
+   * @see <a
+   *     href="https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update">POST
+   *     statuses/update — Twitter Developers</a>
+   */
+  public void updateStatus(TwitterUser twitterUser, String statusString) {
+    Twitter twitter = getTwitter(twitterUser);
+    try {
+      Status status = twitter.updateStatus(statusString);
+      //      LOG.log(Level.INFO, "updateStatus ret.toString(): " + ret.toString());
+      //      LOG.log(Level.INFO, "updateStatus ret.asString(): " + ret.asString());
+    } catch (TwitterException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Nonnull
+  private Twitter getTwitter(TwitterUser twitterUser) {
+    switch (twitterUser) {
+      case MIZO0203:
+        return mTwitter4JUtil.getUserAuthentication().getTwitter();
+      case REDMIZO:
+        return mTwitter4JUtil.getRedmizoUserAuthentication().getTwitter();
+      default:
+        throw new IllegalArgumentException("twitterUser: " + twitterUser);
     }
   }
 }

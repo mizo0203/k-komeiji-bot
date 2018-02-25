@@ -1,5 +1,6 @@
 package com.mizo0203.komeiji.domain;
 
+import com.mizo0203.komeiji.domain.difine.TwitterUser;
 import com.mizo0203.komeiji.repo.TwitterClient;
 
 import java.util.logging.Logger;
@@ -82,5 +83,21 @@ public class UseCase implements AutoCloseable {
    */
   public void deactivatesSubscriptions() {
     mTwitterClient.deactivatesSubscriptions();
+  }
+
+  /**
+   * Updates the authenticating user’s current status, also known as Tweeting. For each update
+   * attempt, the update text is compared with the authenticating user’s recent Tweets. Any attempt
+   * that would result in duplication will be blocked, resulting in a 403 error. A user cannot
+   * submit the same status twice in a row. While not rate limited by the API, a user is limited in
+   * the number of Tweets they can create at a time. If the number of updates posted by the user
+   * reaches the current allowed limit this method will return an HTTP 403 error.
+   *
+   * @see <a
+   *     href="https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update">POST
+   *     statuses/update — Twitter Developers</a>
+   */
+  public void updateStatus(TwitterUser twitterUser, String statusString) {
+    mTwitterClient.updateStatus(twitterUser, statusString);
   }
 }

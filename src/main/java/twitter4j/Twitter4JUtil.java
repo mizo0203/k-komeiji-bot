@@ -7,19 +7,25 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class Twitter4JUtil {
   private final AuthenticationModel mUserAuthentication;
+  private final AuthenticationModel mRedmizoUserAuthentication;
   private final AuthenticationModel mApplicationOnlyAuthentication;
 
   public Twitter4JUtil() {
-    mUserAuthentication = new AuthenticationModel(createTwitterInstance());
+    mUserAuthentication =
+        new AuthenticationModel(
+            createTwitterInstance(KeysAndAccessTokens.TOKEN, KeysAndAccessTokens.TOKEN_SECRET));
+    mRedmizoUserAuthentication =
+        new AuthenticationModel(
+            createTwitterInstance(
+                KeysAndAccessTokens.REDMIZO_TOKEN, KeysAndAccessTokens.REDMIZO_TOKEN_SECRET));
     mApplicationOnlyAuthentication =
         new AuthenticationModel(createTwitterApplicationOnlyAuthInstance());
   }
 
-  private static TwitterImpl createTwitterInstance() {
+  private static TwitterImpl createTwitterInstance(String token, String tokenSecret) {
     TwitterImpl twitter = (TwitterImpl) new TwitterFactory().getInstance();
     twitter.setOAuthConsumer(KeysAndAccessTokens.CONSUMER_KEY, KeysAndAccessTokens.CONSUMER_SECRET);
-    twitter.setOAuthAccessToken(
-        new AccessToken(KeysAndAccessTokens.TOKEN, KeysAndAccessTokens.TOKEN_SECRET));
+    twitter.setOAuthAccessToken(new AccessToken(token, tokenSecret));
     return twitter;
   }
 
@@ -55,6 +61,23 @@ public class Twitter4JUtil {
    */
   public AuthenticationModel getUserAuthentication() {
     return mUserAuthentication;
+  }
+
+  /**
+   * User authentication ユーザー認証
+   *
+   * <p>This is the most common form of resource authentication in Twitter’s OAuth 1.0a
+   * implementation. A signed request identifies an application’s identity in addition to the
+   * identity accompanying granted permissions of the end-user the application is making API calls
+   * on behalf of, represented by the user’s access token.
+   *
+   * <p>これは、TwitterのOAuth 1.0a実装で最も一般的なリソース認証の形式です。
+   * 署名付きリクエストは、アプリケーションがユーザーのアクセストークンで表されるAPI呼び出しを行うエンドユーザーの付与されたアクセス許可に伴うIDに加えて、アプリケーションのIDを識別します。
+   *
+   * @return User authentication ユーザー認証
+   */
+  public AuthenticationModel getRedmizoUserAuthentication() {
+    return mRedmizoUserAuthentication;
   }
 
   /**
