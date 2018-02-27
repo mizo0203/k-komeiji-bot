@@ -77,6 +77,8 @@ public class Repository {
   private final int open_issues;
   private final int watchers;
   private final String default_branch;
+  private final int stargazers;
+  private final String master_branch;
 
   @JsonCreator
   public Repository(
@@ -150,7 +152,9 @@ public class Repository {
       @JsonProperty("forks") int forks,
       @JsonProperty("open_issues") int open_issues,
       @JsonProperty("watchers") int watchers,
-      @JsonProperty("default_branch") String default_branch) {
+      @JsonProperty("default_branch") String default_branch,
+      @JsonProperty("stargazers") int stargazers,
+      @JsonProperty("master_branch") String master_branch) {
     this.id = id;
     this.name = name;
     this.full_name = full_name;
@@ -222,6 +226,8 @@ public class Repository {
     this.open_issues = open_issues;
     this.watchers = watchers;
     this.default_branch = default_branch;
+    this.stargazers = stargazers;
+    this.master_branch = master_branch;
   }
 
   @Override
@@ -250,6 +256,7 @@ public class Repository {
         && forks == that.forks
         && open_issues == that.open_issues
         && watchers == that.watchers
+        && stargazers == that.stargazers
         && Objects.equals(name, that.name)
         && Objects.equals(full_name, that.full_name)
         && Objects.equals(owner, that.owner)
@@ -303,7 +310,8 @@ public class Repository {
         && Objects.equals(language, that.language)
         && Objects.equals(mirror_url, that.mirror_url)
         && Objects.equals(license, that.license)
-        && Objects.equals(default_branch, that.default_branch);
+        && Objects.equals(default_branch, that.default_branch)
+        && Objects.equals(master_branch, that.master_branch);
   }
 
   @Override
@@ -380,7 +388,9 @@ public class Repository {
         forks,
         open_issues,
         watchers,
-        default_branch);
+        default_branch,
+        stargazers,
+        master_branch);
   }
 
   @Override
@@ -569,9 +579,8 @@ public class Repository {
         + archived
         + ", open_issues_count="
         + open_issues_count
-        + ", license='"
+        + ", license="
         + license
-        + '\''
         + ", forks="
         + forks
         + ", open_issues="
@@ -580,6 +589,11 @@ public class Repository {
         + watchers
         + ", default_branch='"
         + default_branch
+        + '\''
+        + ", stargazers="
+        + stargazers
+        + ", master_branch='"
+        + master_branch
         + '\''
         + '}';
   }

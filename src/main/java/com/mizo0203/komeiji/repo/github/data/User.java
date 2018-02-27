@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
-public class User {
+public class User extends Pusher {
   private final String login;
   private final int id;
   private final String avatar_url;
@@ -26,6 +26,8 @@ public class User {
 
   @JsonCreator
   public User(
+      @JsonProperty("name") String name,
+      @JsonProperty("email") String email,
       @JsonProperty("login") String login,
       @JsonProperty("id") int id,
       @JsonProperty("avatar_url") String avatar_url,
@@ -43,6 +45,7 @@ public class User {
       @JsonProperty("received_events_url") String received_events_url,
       @JsonProperty("type") String type,
       @JsonProperty("site_admin") boolean site_admin) {
+    super(name, email);
     this.login = login;
     this.id = id;
     this.avatar_url = avatar_url;
