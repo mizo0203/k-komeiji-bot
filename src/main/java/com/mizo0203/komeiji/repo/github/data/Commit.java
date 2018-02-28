@@ -41,4 +41,48 @@ public class Commit {
     this.removed = removed;
     this.modified = modified;
   }
+
+  public String getId() {
+    return id;
+  }
+
+  public String getTree_id() {
+    return tree_id;
+  }
+
+  public boolean isDistinct() {
+    return distinct;
+  }
+
+  public String getMessage() {
+    return message;
+  }
+
+  public String getTimestamp() {
+    return timestamp;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public Committer getAuthor() {
+    return author;
+  }
+
+  public Committer getCommitter() {
+    return committer;
+  }
+
+  public String[] getAdded() {
+    return added;
+  }
+
+  public String[] getRemoved() {
+    return removed;
+  }
+
+  public String[] getModified() {
+    return modified;
+  }
 }

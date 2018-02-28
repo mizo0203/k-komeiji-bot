@@ -174,14 +174,13 @@ public class TwitterClient {
    *     href="https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update">POST
    *     statuses/update — Twitter Developers</a>
    */
-  public void updateStatus(TwitterUser twitterUser, String statusString) {
+  public Status updateStatus(TwitterUser twitterUser, String statusString) {
     Twitter twitter = getTwitter(twitterUser);
     try {
-      Status status = twitter.updateStatus(statusString);
-      //      LOG.log(Level.INFO, "updateStatus ret.toString(): " + ret.toString());
-      //      LOG.log(Level.INFO, "updateStatus ret.asString(): " + ret.asString());
+      return twitter.updateStatus(statusString);
     } catch (TwitterException e) {
       e.printStackTrace();
+      return null;
     }
   }
 

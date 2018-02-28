@@ -2,6 +2,7 @@ package com.mizo0203.komeiji.domain;
 
 import com.mizo0203.komeiji.domain.difine.TwitterUser;
 import com.mizo0203.komeiji.repo.TwitterClient;
+import twitter4j.Status;
 
 import java.util.logging.Logger;
 
@@ -97,7 +98,7 @@ public class UseCase implements AutoCloseable {
    *     href="https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update">POST
    *     statuses/update — Twitter Developers</a>
    */
-  public void updateStatus(TwitterUser twitterUser, String statusString) {
-    mTwitterClient.updateStatus(twitterUser, statusString);
+  public Status updateStatus(TwitterUser twitterUser, String statusString) {
+    return mTwitterClient.updateStatus(twitterUser, statusString);
   }
 }

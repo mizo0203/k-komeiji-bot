@@ -86,4 +86,56 @@ public class PushEvent {
         + sender
         + '}';
   }
+
+  public String getRef() {
+    return ref;
+  }
+
+  public String getBefore() {
+    return before;
+  }
+
+  public String getAfter() {
+    return after;
+  }
+
+  public boolean isCreated() {
+    return created;
+  }
+
+  public boolean isDeleted() {
+    return deleted;
+  }
+
+  public boolean isForced() {
+    return forced;
+  }
+
+  public String getBase_ref() {
+    return base_ref;
+  }
+
+  public String getCompare() {
+    return compare;
+  }
+
+  public Commit[] getCommits() {
+    return commits;
+  }
+
+  public Commit getHead_commit() {
+    return head_commit;
+  }
+
+  public Repository getRepository() {
+    return repository;
+  }
+
+  public Pusher getPusher() {
+    return pusher;
+  }
+
+  public User getSender() {
+    return sender;
+  }
 }
