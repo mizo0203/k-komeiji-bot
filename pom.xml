@@ -36,7 +36,7 @@ Copyright 2015 Google Inc.
         <dependency>
             <groupId>com.googlecode.objectify</groupId>
             <artifactId>objectify</artifactId>
-            <version>5.1.21</version>
+            <version>5.1.22</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -125,7 +125,7 @@ Copyright 2015 Google Inc.
             <version>0.39</version>
             <scope>test</scope>
         </dependency>
-        
+
     </dependencies>
     <build>
         <!-- for hot reload of the web application -->

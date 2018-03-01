@@ -5,10 +5,12 @@ import com.mizo0203.komeiji.domain.CommitMessageTweetFormat;
 import com.mizo0203.komeiji.domain.UseCase;
 import com.mizo0203.komeiji.domain.difine.GitHubUser;
 import com.mizo0203.komeiji.domain.difine.TwitterUser;
+import com.mizo0203.komeiji.repo.OfyRepository;
 import com.mizo0203.komeiji.repo.github.data.Comment;
 import com.mizo0203.komeiji.repo.github.data.Commit;
 import com.mizo0203.komeiji.repo.github.data.CommitCommentEvent;
 import com.mizo0203.komeiji.repo.github.data.PushEvent;
+import com.mizo0203.komeiji.repo.objectify.entity.CommitEventEntity;
 import org.apache.commons.io.IOUtils;
 import twitter4j.Status;
 
@@ -97,14 +99,15 @@ public class GitHubHookHandlerServlet extends HttpServlet {
             useCase.updateStatus(
                 TwitterUser.MIZO0203, new CommitMessageTweetFormat().format(commit));
         if (status != null) {
-          storeCommitEvent(status.getId(), commit.getId(), pushEvent.getRepository().getName());
+          storeCommitEvent(status.getId(), pushEvent.getRepository().getName(), commit.getId());
         }
       }
     }
   }
 
-  private void storeCommitEvent(long statusId, String commitId, String repositoryName) {
-    // TODO
+  private void storeCommitEvent(long statusId, String repositoryName, String commitId) {
+    OfyRepository.getInstance()
+        .saveKeyEntity(new CommitEventEntity(statusId, repositoryName, commitId));
   }
 
   @Override
