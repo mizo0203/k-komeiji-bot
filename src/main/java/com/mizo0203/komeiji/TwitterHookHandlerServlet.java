@@ -1,6 +1,8 @@
 package com.mizo0203.komeiji;
 
 import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokens;
+import com.mizo0203.komeiji.repo.OfyRepository;
+import com.mizo0203.komeiji.repo.objectify.entity.CommitEventEntity;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import twitter4j.*;
@@ -63,6 +65,9 @@ public class TwitterHookHandlerServlet extends HttpServlet {
       for (int i = 0; i < tweet_create_events.length(); i++) {
         Status status = Twitter4JJSONUtil.asStatus(tweet_create_events.getJSONObject(i));
         LOG.log(Level.INFO, "parse status: " + status);
+        CommitEventEntity entity =
+            OfyRepository.getInstance().loadCommitEventEntity(status.getInReplyToStatusId());
+        LOG.log(Level.INFO, "parse entity: " + entity);
       }
     } catch (JSONException | TwitterException e) {
       e.printStackTrace();

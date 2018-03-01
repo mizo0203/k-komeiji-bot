@@ -107,7 +107,7 @@ public class GitHubHookHandlerServlet extends HttpServlet {
 
   private void storeCommitEvent(long statusId, String repositoryName, String commitId) {
     OfyRepository.getInstance()
-        .saveKeyEntity(new CommitEventEntity(statusId, repositoryName, commitId));
+        .saveCommitEventEntity(new CommitEventEntity(statusId, repositoryName, commitId));
   }
 
   @Override

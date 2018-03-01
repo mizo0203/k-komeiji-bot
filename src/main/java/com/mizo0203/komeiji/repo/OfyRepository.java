@@ -12,7 +12,11 @@ public class OfyRepository {
     return ourInstance;
   }
 
-  public void saveKeyEntity(CommitEventEntity entity) {
+  public void saveCommitEventEntity(CommitEventEntity entity) {
     ObjectifyService.ofy().save().entity(entity).now();
+  }
+
+  public CommitEventEntity loadCommitEventEntity(long statusId) {
+    return ObjectifyService.ofy().load().type(CommitEventEntity.class).id(statusId).now();
   }
 }

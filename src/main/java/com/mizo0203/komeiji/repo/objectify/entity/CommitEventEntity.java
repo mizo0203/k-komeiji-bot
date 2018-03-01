@@ -34,4 +34,18 @@ public class CommitEventEntity {
     this.repositoryName = repositoryName;
     this.commitId = commitId;
   }
+
+  @Override
+  public String toString() {
+    return "CommitEventEntity{"
+        + "statusId="
+        + statusId
+        + ", repositoryName='"
+        + repositoryName
+        + '\''
+        + ", commitId='"
+        + commitId
+        + '\''
+        + '}';
+  }
 }
