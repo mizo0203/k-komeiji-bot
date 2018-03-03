@@ -1,5 +1,6 @@
 package com.mizo0203.komeiji.repo;
 
+import com.mizo0203.komeiji.domain.difine.GitHubAccessTokens;
 import com.mizo0203.komeiji.repo.github.data.CreateCommitComment;
 import org.junit.After;
 import org.junit.Before;
@@ -11,7 +12,7 @@ public class GitHubClientTest {
 
   @Before
   public void setUp() throws Exception {
-    mTarget = new GitHubClient();
+    mTarget = new GitHubClient(GitHubAccessTokens.MUNO0203_PERSONAL_ACCESS_TOKEN);
   }
 
   @After

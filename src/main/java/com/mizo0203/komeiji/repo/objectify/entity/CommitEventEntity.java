@@ -48,4 +48,16 @@ public class CommitEventEntity {
         + '\''
         + '}';
   }
+
+  public long getStatusId() {
+    return statusId;
+  }
+
+  public String getRepositoryName() {
+    return repositoryName;
+  }
+
+  public String getCommitId() {
+    return commitId;
+  }
 }

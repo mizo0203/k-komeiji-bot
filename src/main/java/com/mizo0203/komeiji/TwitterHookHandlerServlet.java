@@ -1,7 +1,12 @@
 package com.mizo0203.komeiji;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mizo0203.komeiji.domain.difine.GitHubAccessTokens;
 import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokens;
+import com.mizo0203.komeiji.domain.difine.TwitterUser;
+import com.mizo0203.komeiji.repo.GitHubClient;
 import com.mizo0203.komeiji.repo.OfyRepository;
+import com.mizo0203.komeiji.repo.github.data.CreateCommitComment;
 import com.mizo0203.komeiji.repo.objectify.entity.CommitEventEntity;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
@@ -15,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -68,6 +74,20 @@ public class TwitterHookHandlerServlet extends HttpServlet {
         CommitEventEntity entity =
             OfyRepository.getInstance().loadCommitEventEntity(status.getInReplyToStatusId());
         LOG.log(Level.INFO, "parse entity: " + entity);
+        if (entity != null) {
+          try {
+            String accessToken =
+                TwitterUser.MIZO0203.equals(status.getUser())
+                    ? GitHubAccessTokens.MIZO0203_PERSONAL_ACCESS_TOKEN
+                    : GitHubAccessTokens.MUNO0203_PERSONAL_ACCESS_TOKEN;
+            CreateCommitComment createCommitComment = new CreateCommitComment(status.getText());
+            new GitHubClient(accessToken)
+                .createCommit(
+                    entity.getRepositoryName(), entity.getCommitId(), createCommitComment);
+          } catch (JsonProcessingException | MalformedURLException e) {
+            LOG.log(Level.SEVERE, "createCommit", e);
+          }
+        }
       }
     } catch (JSONException | TwitterException e) {
       e.printStackTrace();
