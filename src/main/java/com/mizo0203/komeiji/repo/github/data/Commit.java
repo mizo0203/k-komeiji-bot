@@ -3,6 +3,8 @@ package com.mizo0203.komeiji.repo.github.data;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Arrays;
+
 public class Commit {
   private final String id;
   private final String tree_id;
@@ -42,47 +44,48 @@ public class Commit {
     this.modified = modified;
   }
 
+  @Override
+  public String toString() {
+    return "Commit{"
+        + "id='"
+        + id
+        + '\''
+        + ", tree_id='"
+        + tree_id
+        + '\''
+        + ", distinct="
+        + distinct
+        + ", message='"
+        + message
+        + '\''
+        + ", timestamp='"
+        + timestamp
+        + '\''
+        + ", url='"
+        + url
+        + '\''
+        + ", author="
+        + author
+        + ", committer="
+        + committer
+        + ", added="
+        + Arrays.toString(added)
+        + ", removed="
+        + Arrays.toString(removed)
+        + ", modified="
+        + Arrays.toString(modified)
+        + '}';
+  }
+
   public String getId() {
     return id;
-  }
-
-  public String getTree_id() {
-    return tree_id;
-  }
-
-  public boolean isDistinct() {
-    return distinct;
   }
 
   public String getMessage() {
     return message;
   }
 
-  public String getTimestamp() {
-    return timestamp;
-  }
-
   public String getUrl() {
     return url;
-  }
-
-  public Committer getAuthor() {
-    return author;
-  }
-
-  public Committer getCommitter() {
-    return committer;
-  }
-
-  public String[] getAdded() {
-    return added;
-  }
-
-  public String[] getRemoved() {
-    return removed;
-  }
-
-  public String[] getModified() {
-    return modified;
   }
 }

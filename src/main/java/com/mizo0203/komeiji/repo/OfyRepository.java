@@ -1,6 +1,7 @@
 package com.mizo0203.komeiji.repo;
 
 import com.googlecode.objectify.ObjectifyService;
+import com.mizo0203.komeiji.repo.objectify.entity.CommitCommentEventEntity;
 import com.mizo0203.komeiji.repo.objectify.entity.CommitEventEntity;
 
 public class OfyRepository {
@@ -18,5 +19,13 @@ public class OfyRepository {
 
   public CommitEventEntity loadCommitEventEntity(long statusId) {
     return ObjectifyService.ofy().load().type(CommitEventEntity.class).id(statusId).now();
+  }
+
+  public void saveCommitCommentEventEntity(CommitCommentEventEntity entity) {
+    ObjectifyService.ofy().save().entity(entity).now();
+  }
+
+  public CommitCommentEventEntity loadCommitCommentEventEntity(long statusId) {
+    return ObjectifyService.ofy().load().type(CommitCommentEventEntity.class).id(statusId).now();
   }
 }

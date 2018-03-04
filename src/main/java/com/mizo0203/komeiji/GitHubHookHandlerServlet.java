@@ -10,6 +10,7 @@ import com.mizo0203.komeiji.repo.github.data.Comment;
 import com.mizo0203.komeiji.repo.github.data.Commit;
 import com.mizo0203.komeiji.repo.github.data.CommitCommentEvent;
 import com.mizo0203.komeiji.repo.github.data.PushEvent;
+import com.mizo0203.komeiji.repo.objectify.entity.CommitCommentEventEntity;
 import com.mizo0203.komeiji.repo.objectify.entity.CommitEventEntity;
 import org.apache.commons.io.IOUtils;
 import twitter4j.Status;
@@ -67,9 +68,8 @@ public class GitHubHookHandlerServlet extends HttpServlet {
       if (status != null) {
         storeCommitCommentEvent(
             status.getId(),
-            commentId,
             commitCommentEvent.getRepository().getName(),
-            commitCommentEvent.getComment().getCommit_id(),
+            commitCommentEvent.getComment().getCommitId(),
             commitCommentEvent.getComment().getPath(),
             commitCommentEvent.getComment().getPosition());
       }
@@ -78,16 +78,18 @@ public class GitHubHookHandlerServlet extends HttpServlet {
 
   private void storeCommitCommentEvent(
       long statusId,
-      int commentId,
       String repositoryName,
       String commitId,
-      @Nullable String path,
-      @Nullable String position) {
-    // TODO
+      @Nullable String commitPath,
+      @Nullable String commitPosition) {
+    OfyRepository.getInstance()
+        .saveCommitCommentEventEntity(
+            new CommitCommentEventEntity(
+                statusId, repositoryName, commitId, commitPath, commitPosition));
   }
 
   private boolean storedCommitCommentEvent(int commentId) {
-    return false; // TODO
+    return OfyRepository.getInstance().loadCommitCommentEventEntity(commentId) != null;
   }
 
   private void onPushEvent(String body) throws IOException {
