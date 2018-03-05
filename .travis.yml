@@ -1,0 +1,7 @@
+deploy:
+  provider: gae
+  keyfile: komeiji-bot-8d876f3ea563.json
+  project: api-project-93144643231
+before_install:
+- openssl aes-256-cbc -K $encrypted_be4c395cafea_key -iv $encrypted_be4c395cafea_iv
+  -in komeiji-bot-8d876f3ea563.json.enc -out komeiji-bot-8d876f3ea563.json -d
