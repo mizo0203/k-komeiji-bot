@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 deploy:
   provider: gae
   keyfile: komeiji-bot-8d876f3ea563.json
