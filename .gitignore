@@ -72,3 +72,6 @@ fabric.properties
 # End of https://www.gitignore.io/api/intellij
 
 .DS_Store
+
+### Travis CI ###
+komeiji-bot-8d876f3ea563.json
