@@ -1,6 +1,5 @@
 package com.mizo0203.komeiji.repo;
 
-import com.mizo0203.komeiji.domain.difine.GitHubAccessTokens;
 import com.mizo0203.komeiji.repo.github.data.CreateCommitComment;
 import org.junit.After;
 import org.junit.Before;
@@ -12,7 +11,10 @@ public class GitHubClientTest {
 
   @Before
   public void setUp() throws Exception {
-    mTarget = new GitHubClient(GitHubAccessTokens.MUNO0203_PERSONAL_ACCESS_TOKEN);
+    //    mTarget =
+    //        new GitHubClient(
+    //            OfyRepository.getInstance()
+    //                .loadKeyValue(GitHubAccessTokensKey.MUNO0203_PERSONAL_ACCESS_TOKEN));
   }
 
   @After
@@ -23,7 +25,7 @@ public class GitHubClientTest {
   @Test
   public void createCommit() throws Exception {
     CreateCommitComment createCommitComment = new CreateCommitComment("Comment Test 14");
-    mTarget.createCommit(
-        "WebhooksTest", "e517f82312c1dc4a87c28e252071b7b893564452", createCommitComment);
+    //    mTarget.createCommit(
+    //        "WebhooksTest", "e517f82312c1dc4a87c28e252071b7b893564452", createCommitComment);
   }
 }

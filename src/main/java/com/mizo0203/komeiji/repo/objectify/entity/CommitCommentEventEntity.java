@@ -28,7 +28,7 @@ public class CommitCommentEventEntity {
 
   @SuppressWarnings("unused")
   public CommitCommentEventEntity() {
-    // CommitEventEntity must have a no-arg constructor
+    // CommitCommentEventEntity must have a no-arg constructor
     this.statusId = 0;
     this.repositoryName = null;
     this.commitId = null;

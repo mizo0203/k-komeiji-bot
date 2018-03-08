@@ -1,6 +1,7 @@
 package twitter4j;
 
-import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokens;
+import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokensKey;
+import com.mizo0203.komeiji.repo.OfyRepository;
 import twitter4j.auth.AccessToken;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
@@ -13,18 +14,24 @@ public class Twitter4JUtil {
   public Twitter4JUtil() {
     mUserAuthentication =
         new AuthenticationModel(
-            createTwitterInstance(KeysAndAccessTokens.TOKEN, KeysAndAccessTokens.TOKEN_SECRET));
+            createTwitterInstance(
+                OfyRepository.getInstance().loadKeyValue(KeysAndAccessTokensKey.TOKEN),
+                OfyRepository.getInstance().loadKeyValue(KeysAndAccessTokensKey.TOKEN_SECRET)));
     mRedmizoUserAuthentication =
         new AuthenticationModel(
             createTwitterInstance(
-                KeysAndAccessTokens.REDMIZO_TOKEN, KeysAndAccessTokens.REDMIZO_TOKEN_SECRET));
+                OfyRepository.getInstance().loadKeyValue(KeysAndAccessTokensKey.REDMIZO_TOKEN),
+                OfyRepository.getInstance()
+                    .loadKeyValue(KeysAndAccessTokensKey.REDMIZO_TOKEN_SECRET)));
     mApplicationOnlyAuthentication =
         new AuthenticationModel(createTwitterApplicationOnlyAuthInstance());
   }
 
   private static TwitterImpl createTwitterInstance(String token, String tokenSecret) {
     TwitterImpl twitter = (TwitterImpl) new TwitterFactory().getInstance();
-    twitter.setOAuthConsumer(KeysAndAccessTokens.CONSUMER_KEY, KeysAndAccessTokens.CONSUMER_SECRET);
+    twitter.setOAuthConsumer(
+        OfyRepository.getInstance().loadKeyValue(KeysAndAccessTokensKey.CONSUMER_KEY),
+        OfyRepository.getInstance().loadKeyValue(KeysAndAccessTokensKey.CONSUMER_SECRET));
     twitter.setOAuthAccessToken(new AccessToken(token, tokenSecret));
     return twitter;
   }
@@ -33,8 +40,10 @@ public class Twitter4JUtil {
     Configuration conf =
         new ConfigurationBuilder()
             .setApplicationOnlyAuthEnabled(true)
-            .setOAuthConsumerKey(KeysAndAccessTokens.CONSUMER_KEY)
-            .setOAuthConsumerSecret(KeysAndAccessTokens.CONSUMER_SECRET)
+            .setOAuthConsumerKey(
+                OfyRepository.getInstance().loadKeyValue(KeysAndAccessTokensKey.CONSUMER_KEY))
+            .setOAuthConsumerSecret(
+                OfyRepository.getInstance().loadKeyValue(KeysAndAccessTokensKey.CONSUMER_SECRET))
             .build();
     TwitterImpl twitter = (TwitterImpl) new TwitterFactory(conf).getInstance();
     try {

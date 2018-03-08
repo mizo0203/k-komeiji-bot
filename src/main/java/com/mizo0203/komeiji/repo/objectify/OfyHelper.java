@@ -1,7 +1,9 @@
 package com.mizo0203.komeiji.repo.objectify;
 
 import com.googlecode.objectify.ObjectifyService;
+import com.mizo0203.komeiji.repo.objectify.entity.CommitCommentEventEntity;
 import com.mizo0203.komeiji.repo.objectify.entity.CommitEventEntity;
+import com.mizo0203.komeiji.repo.objectify.entity.KeyEntity;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -17,7 +19,9 @@ public class OfyHelper implements ServletContextListener {
     // This will be invoked as part of a warmup request, or the first user
     // request if no warmup
     // request.
+    ObjectifyService.register(CommitCommentEventEntity.class);
     ObjectifyService.register(CommitEventEntity.class);
+    ObjectifyService.register(KeyEntity.class);
   }
 
   @Override

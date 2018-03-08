@@ -1,8 +1,8 @@
 package com.mizo0203.komeiji;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.mizo0203.komeiji.domain.difine.GitHubAccessTokens;
-import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokens;
+import com.mizo0203.komeiji.domain.difine.GitHubAccessTokensKey;
+import com.mizo0203.komeiji.domain.difine.KeysAndAccessTokensKey;
 import com.mizo0203.komeiji.domain.difine.TwitterUser;
 import com.mizo0203.komeiji.repo.GitHubClient;
 import com.mizo0203.komeiji.repo.OfyRepository;
@@ -54,7 +54,11 @@ public class TwitterHookHandlerServlet extends HttpServlet {
   private String getSignature(String httpRequestBody)
       throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
     SecretKeySpec key =
-        new SecretKeySpec(KeysAndAccessTokens.CONSUMER_SECRET.getBytes(), "HmacSHA256");
+        new SecretKeySpec(
+            OfyRepository.getInstance()
+                .loadKeyValue(KeysAndAccessTokensKey.CONSUMER_SECRET)
+                .getBytes(),
+            "HmacSHA256");
     Mac mac = Mac.getInstance("HmacSHA256");
     mac.init(key);
     byte[] source = httpRequestBody.getBytes("UTF-8");
@@ -78,8 +82,10 @@ public class TwitterHookHandlerServlet extends HttpServlet {
           try {
             String accessToken =
                 TwitterUser.MIZO0203.equals(status.getUser())
-                    ? GitHubAccessTokens.MIZO0203_PERSONAL_ACCESS_TOKEN
-                    : GitHubAccessTokens.MUNO0203_PERSONAL_ACCESS_TOKEN;
+                    ? OfyRepository.getInstance()
+                        .loadKeyValue(GitHubAccessTokensKey.MIZO0203_PERSONAL_ACCESS_TOKEN)
+                    : OfyRepository.getInstance()
+                        .loadKeyValue(GitHubAccessTokensKey.MUNO0203_PERSONAL_ACCESS_TOKEN);
             CreateCommitComment createCommitComment = new CreateCommitComment(status.getText());
             new GitHubClient(accessToken)
                 .createCommit(
