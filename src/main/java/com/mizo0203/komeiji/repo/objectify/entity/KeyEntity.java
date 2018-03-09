@@ -19,7 +19,7 @@ import com.mizo0203.komeiji.repo.objectify.OfyHelper;
 public class KeyEntity {
 
   @Id private final String key;
-  private final String value;
+  private String value;
 
   @SuppressWarnings("unused")
   public KeyEntity() {
@@ -28,13 +28,18 @@ public class KeyEntity {
     this.value = null;
   }
 
-  public KeyEntity(String key, String value) {
+  public KeyEntity(String key) {
     this.key = key;
-    this.value = value;
+    this.value = "FIXME";
   }
 
   public String getValue() {
     return value;
+  }
+
+  @SuppressWarnings("unused")
+  public void setValue(String value) {
+    this.value = value;
   }
 
   @Override

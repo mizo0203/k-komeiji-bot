@@ -33,7 +33,7 @@ public class OfyRepository {
   public String loadKeyValue(String key) {
     KeyEntity keyEntity = ObjectifyService.ofy().load().type(KeyEntity.class).id(key).now();
     if (keyEntity == null) {
-      keyEntity = new KeyEntity(key, "");
+      keyEntity = new KeyEntity(key);
       ObjectifyService.ofy().save().entity(keyEntity).now();
     }
     return keyEntity.getValue();
