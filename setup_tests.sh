@@ -33,10 +33,7 @@ fi
 # http://stackoverflow.com/a/677212/101923
 if ! command -v gcloud  >/dev/null 2>&1; then
 	(
-	cd "${HOME}"
-	wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz --directory-prefix="${HOME}"
-	tar xzf google-cloud-sdk.tar.gz
-	./google-cloud-sdk/install.sh --usage-reporting false --path-update false --command-completion false
+	apt-get install -y
 	)
 fi
 
