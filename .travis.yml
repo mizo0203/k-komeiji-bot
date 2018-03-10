@@ -1,15 +1,7 @@
 language: java
 jdk:
-- oraclejdk8
-deploy:
-  provider: gae
-  keyfile: komeiji-bot-8d876f3ea563.json
-  project: api-project-93144643231
-  config: src/main/webapp/WEB-INF/appengine-web.xml
-  version: 1
-  verbosity: info
-  on:
-    all_branches: true
+  - oraclejdk8
 before_install:
-- openssl aes-256-cbc -K $encrypted_be4c395cafea_key -iv $encrypted_be4c395cafea_iv
-  -in komeiji-bot-8d876f3ea563.json.enc -out komeiji-bot-8d876f3ea563.json -d
+  - openssl aes-256-cbc -K $encrypted_be4c395cafea_key -iv $encrypted_be4c395cafea_iv -in komeiji-bot-8d876f3ea563.json.enc -out komeiji-bot-8d876f3ea563.json -d
+after_success:
+  - mvn clean appengine:deploy
