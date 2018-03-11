@@ -29,16 +29,12 @@ fi
 
 # Install gcloud command-line utility
 # https://cloud.google.com/sdk/
-# First check that the command is not yet installed with `command -v`
-# http://stackoverflow.com/a/677212/101923
-if ! command -v gcloud  >/dev/null 2>&1; then
-	(
-	cd "${HOME}"
-	wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz --directory-prefix="${HOME}"
-	tar xzf google-cloud-sdk.tar.gz
-	./google-cloud-sdk/install.sh --usage-reporting false --path-update false --command-completion false
-	)
-fi
+wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz
+tar xzf google-cloud-sdk.tar.gz
+./google-cloud-sdk/install.sh --usage-reporting false --path-update false --command-completion false
+which gcloud
+export PATH="$PWD/google-cloud-sdk/bin:$PATH"
+which gcloud
 
 gcloud -q components update app-engine-java
 
