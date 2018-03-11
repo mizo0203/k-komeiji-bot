@@ -7,4 +7,6 @@ before_install:
   - export GOOGLE_CLOUD_PROJECT=api-project-93144643231
 install: sudo ./setup_tests.sh
 after_success:
+  - which gcloud
+  - gcloud -q components install app-engine-java
   - mvn clean appengine:deploy
