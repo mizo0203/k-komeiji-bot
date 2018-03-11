@@ -1,11 +1,13 @@
+sudo: required
 language: java
 jdk:
-- oraclejdk8
-deploy:
-  provider: gae
-  keyfile: komeiji-bot-8d876f3ea563.json
-  project: api-project-93144643231
-  config: src/main/webapp/WEB-INF/appengine-web.xml
+  - oraclejdk8
 before_install:
-- openssl aes-256-cbc -K $encrypted_be4c395cafea_key -iv $encrypted_be4c395cafea_iv
-  -in komeiji-bot-8d876f3ea563.json.enc -out komeiji-bot-8d876f3ea563.json -d
+  - openssl aes-256-cbc -K $encrypted_be4c395cafea_key -iv $encrypted_be4c395cafea_iv -in komeiji-bot-8d876f3ea563.json.enc -out komeiji-bot-8d876f3ea563.json -d && export GOOGLE_APPLICATION_CREDENTIALS="$(pwd)/komeiji-bot-8d876f3ea563.json"
+  - export GOOGLE_CLOUD_PROJECT=api-project-93144643231
+install: sudo ./setup_tests.sh
+after_success:
+  - export PATH="$PWD/google-cloud-sdk/bin:$PATH"
+  - which gcloud
+  - gcloud -q components install app-engine-java
+  - mvn clean appengine:deploy
