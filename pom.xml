@@ -146,7 +146,7 @@ Copyright 2015 Google Inc.
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>1.3.2</version>
                 <configuration>
-                    <project>api-project-93144643231</project>
+                    <project>stellar-river-459</project>
                     <version>1</version>
                 </configuration>
             </plugin>

@@ -74,4 +74,4 @@ fabric.properties
 .DS_Store
 
 ### Travis CI ###
-komeiji-bot-8d876f3ea563.json
+client-secret.json

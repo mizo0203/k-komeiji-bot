@@ -13,7 +13,7 @@ public class TwitterClient {
 
   private static final Logger LOG = Logger.getLogger(TwitterClient.class.getName());
   private static final String TWITTER_API_ACCOUNT_ACTIVITY_WEBHOOKS_ENV_NAME_URL_STR =
-      "https://api.twitter.com/1.1/account_activity/all/env-beta/webhooks.json?url=https%3A%2F%2Fapi-project-93144643231.appspot.com%2Ftwitter_hook";
+      "https://api.twitter.com/1.1/account_activity/all/env-beta/webhooks.json?url=https%3A%2F%2Fstellar-river-459.appspot.com%2Ftwitter_hook";
   private static final String TWITTER_API_ACCOUNT_ACTIVITY_WEBHOOKS_URL_STR =
       "https://api.twitter.com/1.1/account_activity/all/webhooks.json";
   private static final String TWITTER_API_ACCOUNT_ACTIVITY_SUBSCRIPTIONS_ENV_NAME_URL_STR =
