@@ -9,4 +9,4 @@ before_install:
 - export GOOGLE_CLOUD_PROJECT=stellar-river-459
 install: sudo ./setup_tests.sh && export PATH="${HOME}/google-cloud-sdk/bin:${PATH}"
 after_success:
-- mvn clean appengine:deploy
+- mvn -e -X clean appengine:deploy
