@@ -66,6 +66,18 @@ Copyright 2015 Google Inc.
             <version>2.6</version>
         </dependency>
 
+        <!-- [START Retrofit 2] -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jackson</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
         <!-- [START Jackson] -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -83,6 +95,7 @@ Copyright 2015 Google Inc.
             <version>2.9.8</version>
         </dependency>
         <!-- [END Jackson] -->
+        <!-- [END Retrofit 2] -->
 
         <!-- [START Twitter4J] -->
         <dependency>

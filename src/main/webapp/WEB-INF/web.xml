@@ -4,6 +4,14 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>com.mizo0203.komeiji.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/admin/hello</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>registersWebhookURL</servlet-name>
         <servlet-class>com.mizo0203.komeiji.RegistersWebhookUrlServlet</servlet-class>
     </servlet>
