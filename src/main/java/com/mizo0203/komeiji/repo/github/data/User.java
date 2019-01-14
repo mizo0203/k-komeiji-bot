@@ -8,6 +8,7 @@ import java.util.Objects;
 public class User extends Pusher {
   private final String login;
   private final int id;
+  private final String node_id;
   private final String avatar_url;
   private final String gravatar_id;
   private final String url;
@@ -30,6 +31,7 @@ public class User extends Pusher {
       @JsonProperty("email") String email,
       @JsonProperty("login") String login,
       @JsonProperty("id") int id,
+      @JsonProperty("node_id") String node_id,
       @JsonProperty("avatar_url") String avatar_url,
       @JsonProperty("gravatar_id") String gravatar_id,
       @JsonProperty("url") String url,
@@ -48,6 +50,7 @@ public class User extends Pusher {
     super(name, email);
     this.login = login;
     this.id = id;
+    this.node_id = node_id;
     this.avatar_url = avatar_url;
     this.gravatar_id = gravatar_id;
     this.url = url;
@@ -73,6 +76,9 @@ public class User extends Pusher {
         + '\''
         + ", id="
         + id
+        + ", node_id='"
+        + node_id
+        + '\''
         + ", avatar_url='"
         + avatar_url
         + '\''
@@ -130,6 +136,7 @@ public class User extends Pusher {
     }
     User user = (User) o;
     return id == user.id
+        && Objects.equals(node_id, user.node_id)
         && site_admin == user.site_admin
         && Objects.equals(login, user.login)
         && Objects.equals(avatar_url, user.avatar_url)
@@ -154,6 +161,7 @@ public class User extends Pusher {
     return Objects.hash(
         login,
         id,
+        node_id,
         avatar_url,
         gravatar_id,
         url,
@@ -177,6 +185,10 @@ public class User extends Pusher {
 
   public int getId() {
     return id;
+  }
+
+  public String getNodeId() {
+    return node_id;
   }
 
   public String getAvatar_url() {

@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class Repository {
   private final int id;
+  private final String node_id;
   private final String name;
   private final String full_name;
   private final User owner;
@@ -84,6 +85,7 @@ public class Repository {
   public Repository(
       @JsonProperty("name") String name,
       @JsonProperty("id") int id,
+      @JsonProperty("node_id") String node_id,
       @JsonProperty("full_name") String full_name,
       @JsonProperty("owner") User owner,
       @JsonProperty("private") boolean private_value,
@@ -156,6 +158,7 @@ public class Repository {
       @JsonProperty("stargazers") int stargazers,
       @JsonProperty("master_branch") String master_branch) {
     this.id = id;
+    this.node_id = node_id;
     this.name = name;
     this.full_name = full_name;
     this.owner = owner;
@@ -232,6 +235,10 @@ public class Repository {
 
   public int getId() {
     return id;
+  }
+
+  public String getNodeId() {
+    return node_id;
   }
 
   public String getName() {
@@ -532,6 +539,7 @@ public class Repository {
     }
     Repository that = (Repository) o;
     return id == that.id
+        && Objects.equals(node_id, that.node_id)
         && private_value == that.private_value
         && fork == that.fork
         && size == that.size
@@ -611,6 +619,7 @@ public class Repository {
 
     return Objects.hash(
         id,
+        node_id,
         name,
         full_name,
         owner,
@@ -690,6 +699,9 @@ public class Repository {
     return "Repository{"
         + "id="
         + id
+        + ", node_id='"
+        + node_id
+        + '\''
         + ", name='"
         + name
         + '\''
